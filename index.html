@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="./bootstrap-5.3.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+        rel="stylesheet">
+
+    <!-- jquery -->
+    <script src="./jquery-3.1.1.js"></script>
+
+    <title>Jumia</title>
+    <link rel="icon" type="image/x-icon" href="./imgs/logoBrand.png">
+
+</head>
+
+<body>
+
+    <div class="alert alert-success alert-dismissible fade" role="alert">
+        Welcome Back, Good to see You <strong id="welcomeUser" class="text-capitalize"></strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+
+    <div class="alert alert-secondary alert-dismissible fade" role="alert">
+        Good Bye, See You Later, Logged Out! <strong id="byeUser" class="text-capitalize"></strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+
+
+    <!-- Nav Start -->
+    <nav class="navbar sticky-top navbar-expand-lg bg-light">
+        <div class="container gap-2">
+            <a class="navbar-brand" href="#">
+                <img src="./imgs/Jumia-Logo.png" width="150" alt="logo">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <div class="navbar-nav w-100 gap-3">
+                    <form class="search d-flex w-100 gap-2" role="search">
+                        <div class="input-group">
+                            <div class="input-group-text bg-light">
+                                <i class="bi bi-search"></i>
+                            </div>
+                            <input type="search" class="form-control custom-focus"
+                                placeholder="Search Products, Brands and Categories">
+                        </div>
+                        <button class="btn btn-jumia" type="submit">Search</button>
+                    </form>
+                    <div class="dropdown">
+                        <a class="btn btn-light hover-jumia dropdown-toggle p-2 fw-semibold" type="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-person"></i>
+                            Account
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            <li class="text-center my-2">
+                                <a href="./loginPage/login.html" id="signIn" class="btn btn-jumia shadow w-75">sign
+                                    in</a>
+                                <button class="btn btn-dark shadow w-75 d-none" id="logOut">log out</button>
+                            </li>
+
+                            <li class="border-top border-secondary">
+                                <a class="dropdown-item p-2" href="#">
+                                    <i class="bi bi-person fs-5"></i>
+                                    <span>My account</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item p-2" href="#">
+                                    <i class="bi bi-basket3"></i>
+                                    <span>Orders</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item p-2" href="#">
+                                    <i class="bi bi-bag-heart"></i>
+                                    <span>Saved Items</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="dropdown">
+                        <a class="btn btn-light hover-jumia dropdown-toggle p-2 fw-semibold" type="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-question-circle"></i>
+                            Help
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item p-2" href="#">
+                                    <span>help center</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item p-2" href="#">
+                                    <span>Place an Order</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item p-2" href="#">
+                                    <span>Pay for Your Oder</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item p-2" href="#">
+                                    <span>Track Your Oder</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item p-2 border-bottom border-secondary" href="#">
+                                    <span>Cancel an Oder</span>
+                                </a>
+                            </li>
+
+                            <li class="text-center my-3">
+                                <a href="#" class="btn btn-jumia shadow w-75">
+                                    <i class="bi bi-chat-left-dots"></i>
+                                    <span>live chat</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="nav-item">
+                        <a class="btn p-2 fw-semibold hover-jumia" aria-current="page" href="#">
+                            <i class="bi bi-cart3"></i>
+                            Cart
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </nav>
+    <!-- Nav End -->
+
+    <!-- ShopyBy Start -->
+    <section class="mt-3">
+        <div class="container bg-white p-3 rounded-2">
+            <h5 class="text-center text-capitalize mb-3">shop by category</h5>
+            <div class="row justify-content-center gap-3 gap-lg-0">
+                <div class=" card border-0 text-center col-12 col-md-5 col-lg-2">
+                    <a href="#">
+                        <img class="w-100" src="./imgs/Laptops.png" alt="">
+                    </a>
+                </div>
+                <div class=" card border-0 text-center col-12 col-md-5 col-lg-2">
+                    <a href="#">
+                        <img class="w-100" src="./imgs/ComputingAcc.png" alt="">
+                    </a>
+                </div>
+                <div class=" card border-0 text-center col-12 col-md-5 col-lg-2">
+                    <a href="#">
+                        <img class="w-100" src="./imgs/DataStorage.png" alt="">
+                    </a>
+                </div>
+                <div class=" card border-0 text-center col-12 col-md-5 col-lg-2">
+                    <a href="#">
+                        <img class="w-100" src="./imgs/LaptopStands.png" alt="">
+                    </a>
+                </div>
+                <div class=" card border-0 text-center col-12 col-md-5 col-lg-2">
+                    <a href="#">
+                        <img class="w-100" src="./imgs/PrintersScanners.png" alt="">
+                    </a>
+                </div>
+                <div class=" card border-0 text-center col-12 col-md-5 col-lg-2">
+                    <a href="#">
+                        <img class="w-100" src="./imgs/LaptopAcc.png" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ShopyBy End -->
+
+    <!-- topPicks Start -->
+    <section class="mt-3">
+        <div class="container topPicks-container bg-white p-3 rounded-2 position-relative">
+            <div class="d-flex justify-content-between">
+                <h5 class="text-capitalize mb-3">top Picks</h5>
+                <a href="#" class="text-uppercase text-jumia text-decoration-none fs-6">
+                    see all
+                    <i class="bi bi-chevron-right"></i>
+                </a>
+            </div>
+
+
+            <div class="custom-carousel position-relative row py-3">
+                <div class=" col-12 col-md-6 col-lg-2 card border-0">
+                    <a href="#">
+                        <img class="w-100" src="./imgs/1.jpg" alt="">
+                    </a>
+                    <div class="card-body">
+                        <p class="card-text text-truncate mb-1">Some quick example text to build on the card
+                            title</p>
+                        <h5 class="card-title mb-0">EGP 455</h5>
+                        <p class="card-title text-muted text-decoration-line-through">EGP 525</p>
+                    </div>
+                </div>
+
+
+                <div class=" col-12 col-md-6 col-lg-2 card border-0">
+                    <a href="#">
+                        <img class="w-100" src="./imgs/2.jpg" alt="">
+                    </a>
+                    <div class="card-body">
+                        <p class="card-text text-truncate mb-1">Some quick example text to build on the card
+                            title</p>
+                        <h5 class="card-title mb-0">EGP 455</h5>
+                        <p class="card-title text-muted text-decoration-line-through">EGP 525</p>
+                    </div>
+                </div>
+
+                <div class=" col-12 col-md-6 col-lg-2 card border-0">
+                    <a href="#">
+                        <img class="w-100" src="./imgs/3.jpg" alt="">
+                    </a>
+                    <div class="card-body">
+                        <p class="card-text text-truncate mb-1">Some quick example text to build on the card
+                            title</p>
+                        <h5 class="card-title mb-0">EGP 455</h5>
+                        <p class="card-title text-muted text-decoration-line-through">EGP 525</p>
+                    </div>
+                </div>
+
+
+                <div class=" col-12 col-md-6 col-lg-2 card border-0">
+                    <a href="#">
+                        <img class="w-100" src="./imgs/4.jpg" alt="">
+                    </a>
+                    <div class="card-body">
+                        <p class="card-text text-truncate mb-1">Some quick example text to build on the card
+                            title</p>
+                        <h5 class="card-title mb-0">EGP 455</h5>
+                        <p class="card-title text-muted text-decoration-line-through">EGP 525</p>
+                    </div>
+                </div>
+
+
+                <div class=" col-12 col-md-6 col-lg-2 card border-0">
+                    <a href="#">
+                        <img class="w-100" src="./imgs/5.jpg" alt="">
+                    </a>
+                    <div class="card-body">
+                        <p class="card-text text-truncate mb-1">Some quick example text to build on the card
+                            title</p>
+                        <h5 class="card-title mb-0">EGP 455</h5>
+                        <p class="card-title text-muted text-decoration-line-through">EGP 525</p>
+                    </div>
+                </div>
+
+
+                <div class=" col-12 col-md-6 col-lg-2 card border-0">
+                    <a href="#">
+                        <img class="w-100" src="./imgs/6.jpg" alt="">
+                    </a>
+                    <div class="card-body">
+                        <p class="card-text text-truncate mb-1">Some quick example text to build on the card
+                            title</p>
+                        <h5 class="card-title mb-0">EGP 455</h5>
+                        <p class="card-title text-muted text-decoration-line-through">EGP 525</p>
+                    </div>
+                </div>
+
+                <div class=" col-12 col-md-6 col-lg-2 card border-0">
+                    <a href="#">
+                        <img class="w-100" src="./imgs/7.jpg" alt="">
+                    </a>
+                    <div class="card-body">
+                        <p class="card-text text-truncate mb-1">Some quick example text to build on the card
+                            title</p>
+                        <h5 class="card-title mb-0">EGP 455</h5>
+                        <p class="card-title text-muted text-decoration-line-through">EGP 525</p>
+                    </div>
+                </div>
+
+                <div class=" col-12 col-md-6 col-lg-2 card border-0">
+                    <a href="#">
+                        <img class="w-100" src="./imgs/8.jpg" alt="">
+                    </a>
+                    <div class="card-body">
+                        <p class="card-text text-truncate mb-1">Some quick example text to build on the card
+                            title</p>
+                        <h5 class="card-title mb-0">EGP 455</h5>
+                        <p class="card-title text-muted text-decoration-line-through">EGP 525</p>
+                    </div>
+                </div>
+
+
+                <div class=" col-12 col-md-6 col-lg-2 card border-0">
+                    <a href="#">
+                        <img class="w-100" src="./imgs/9.jpg" alt="">
+                    </a>
+                    <div class="card-body">
+                        <p class="card-text text-truncate mb-1">Some quick example text to build on the card
+                            title</p>
+                        <h5 class="card-title mb-0">EGP 455</h5>
+                        <p class="card-title text-muted text-decoration-line-through">EGP 525</p>
+                    </div>
+                </div>
+
+
+                <div class=" col-12 col-md-6 col-lg-2 card border-0">
+                    <a href="#">
+                        <img class="w-100" src="./imgs/10.jpg" alt="">
+                    </a>
+                    <div class="card-body">
+                        <p class="card-text text-truncate mb-1">Some quick example text to build on the card
+                            title</p>
+                        <h5 class="card-title mb-0">EGP 455</h5>
+                        <p class="card-title text-muted text-decoration-line-through">EGP 525</p>
+                    </div>
+                </div>
+
+
+                <div class=" col-12 col-md-6 col-lg-2 card border-0">
+                    <a href="#">
+                        <img class="w-100" src="./imgs/11.jpg" alt="">
+                    </a>
+                    <div class="card-body">
+                        <p class="card-text text-truncate mb-1">Some quick example text to build on the card
+                            title</p>
+                        <h5 class="card-title mb-0">EGP 455</h5>
+                        <p class="card-title text-muted text-decoration-line-through">EGP 525</p>
+                    </div>
+                </div>
+
+
+                <div class=" col-12 col-md-6 col-lg-2 card border-0">
+                    <a href="#">
+                        <img class="w-100" src="./imgs/12.jpg" alt="">
+                    </a>
+                    <div class="card-body">
+                        <p class="card-text text-truncate mb-1">Some quick example text to build on the card
+                            title</p>
+                        <h5 class="card-title mb-0">EGP 455</h5>
+                        <p class="card-title text-muted text-decoration-line-through">EGP 525</p>
+                    </div>
+                </div>
+
+                <div class=" col-12 col-md-6 col-lg-2 card border-0">
+                    <a href="#">
+                        <img class="w-100" src="./imgs/13.jpg" alt="">
+                    </a>
+                    <div class="card-body">
+                        <p class="card-text text-truncate mb-1">Some quick example text to build on the card
+                            title</p>
+                        <h5 class="card-title mb-0">EGP 455</h5>
+                        <p class="card-title text-muted text-decoration-line-through">EGP 525</p>
+                    </div>
+                </div>
+
+
+                <div class=" col-12 col-md-6 col-lg-2 card border-0">
+                    <a href="#">
+                        <img class="w-100" src="./imgs/14.jpg" alt="">
+                    </a>
+                    <div class="card-body">
+                        <p class="card-text text-truncate mb-1">Some quick example text to build on the card
+                            title</p>
+                        <h5 class="card-title mb-0">EGP 455</h5>
+                        <p class="card-title text-muted text-decoration-line-through">EGP 525</p>
+                    </div>
+                </div>
+
+                <div class=" col-12 col-md-6 col-lg-2 card border-0">
+                    <a href="#">
+                        <img class="w-100" src="./imgs/15.jpg" alt="">
+                    </a>
+                    <div class="card-body">
+                        <p class="card-text text-truncate mb-1">Some quick example text to build on the card
+                            title</p>
+                        <h5 class="card-title mb-0">EGP 455</h5>
+                        <p class="card-title text-muted text-decoration-line-through">EGP 525</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="next position-absolute end-0"><i class="bi bi-chevron-right"></i></div>
+            <div class="prev position-absolute start-0"><i class="bi bi-chevron-left"></i></div>
+        </div>
+
+    </section>
+    <!-- topPicks End -->
+
+    <!-- installment start -->
+    <section class="mt-3">
+        <div class="container installment bg-white p-3 rounded-2">
+            <div class="row justify-content-between gap-2 gap-md-0">
+                <div class="col-12 col-md-6">
+                    <a href="#">
+                        <img src="./imgs/installment.png" class="mw-100 rounded-2 card ">
+                    </a>
+                </div>
+                <div class="col-12 col-md-6">
+                    <a href="#">
+                        <img src="./imgs/warranty.png" class="mw-100 rounded-2 card  ">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- installment End -->
+
+
+    <!-- products start -->
+    <section class="mt-3 products-section">
+        <div class="container">
+            <div class="row justify-content-between">
+
+                <button type="button" id="modalFilter"
+                    class="btn btn-primary d-block d-lg-none text-center fs-3 fw-light rounded-pill text-uppercase"
+                    data-bs-toggle="modal" data-bs-target="#filter">
+                    <i class="bi bi-filter-square text-jumia"></i> Filter
+                </button>
+
+
+                <div class="modal-dialog modal-dialog-centered align-self-start">
+                    <div class="modal-content">
+                        <ul class="list-group align-self-start w-100">
+                            <li class="list-group-item border-0 text-uppercase fw-semibold">category</li>
+                            <li class="list-group-item border-0">
+                                <a href="#"
+                                    class="text-uppercase fw-semibold text-decoration-none text-dark">computing</a>
+                            </li>
+
+                            <ul>
+                                <li class="list-group-item border-0">
+                                    <a href="#" class="btn">computers</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="#" class="btn">accessories</a>
+                                </li>
+                                <li class="list-group-item border-bottom-0 text-uppercase fw-semibold">Brand</li>
+                                <li class="list-group-item border-0">
+                                    <div class="input-group">
+                                        <div class="input-group-text bg-light">
+                                            <i class="bi bi-search"></i>
+                                        </div>
+                                        <form action="
+                                    ">
+
+                                            <input type="search" class="form-control custom-focus" placeholder="Search">
+                                        </form>
+                                    </div>
+                                </li>
+
+
+                                <div style="height: 100px;" class="overflow-y-auto">
+                                    <li class="list-group-item border-0">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"
+                                            checked>
+                                        <label class="form-check-label" for="flexCheckChecked">
+                                            Checked checkbox
+                                        </label>
+                                    </li>
+
+                                    <li class="list-group-item border-0">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked1">
+                                        <label class="form-check-label" for="flexCheckChecked1">
+                                            checkbox
+                                        </label>
+                                    </li>
+
+                                    <li class="list-group-item border-0">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked2">
+                                        <label class="form-check-label" for="flexCheckChecked2">
+                                            checkbox
+                                        </label>
+                                    </li>
+
+                                    <li class="list-group-item border-0">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked3">
+                                        <label class="form-check-label" for="flexCheckChecked3">
+                                            checkbox
+                                        </label>
+                                    </li>
+
+                                    <li class="list-group-item border-0">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked4">
+                                        <label class="form-check-label" for="flexCheckChecked4">
+                                            checkbox
+                                        </label>
+                                    </li>
+
+                                    <li class="list-group-item border-0">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked5">
+                                        <label class="form-check-label" for="flexCheckChecked5">
+                                            checkbox
+                                        </label>
+                                    </li>
+                                </div>
+
+                                <li class="list-group-item border-bottom-0 text-uppercase fw-semibold">product
+                                    rating
+                                </li>
+
+                                <li class="list-group-item border-0">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault1">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                        <i class="bi bi-star-fill text-warning"></i>
+                                        <i class="bi bi-star-fill text-warning"></i>
+                                        <i class="bi bi-star-fill text-warning"></i>
+                                        <i class="bi bi-star-fill text-warning"></i>
+                                        <i class="bi bi-star-fill text-muted"></i>
+                                        & above
+                                    </label>
+                                </li>
+
+                                <li class="list-group-item border-0">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault1">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                        <i class="bi bi-star-fill text-warning"></i>
+                                        <i class="bi bi-star-fill text-warning"></i>
+                                        <i class="bi bi-star-fill text-warning"></i>
+                                        <i class="bi bi-star-fill text-muted"></i>
+                                        <i class="bi bi-star-fill text-muted"></i>
+                                        & above
+                                    </label>
+                                </li>
+
+                                <li class="list-group-item border-0">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault1">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                        <i class="bi bi-star-fill text-warning"></i>
+                                        <i class="bi bi-star-fill text-warning"></i>
+                                        <i class="bi bi-star-fill text-muted"></i>
+                                        <i class="bi bi-star-fill text-muted"></i>
+                                        <i class="bi bi-star-fill text-muted"></i>
+                                        & above
+                                    </label>
+                                </li>
+
+                                <li class="list-group-item border-0">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault1">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                        <i class="bi bi-star-fill text-warning"></i>
+                                        <i class="bi bi-star-fill text-muted"></i>
+                                        <i class="bi bi-star-fill text-muted"></i>
+                                        <i class="bi bi-star-fill text-muted"></i>
+                                        <i class="bi bi-star-fill text-muted"></i>
+                                        & above
+                                    </label>
+                                </li>
+
+
+                                <li class="list-group-item border-bottom-0 text-uppercase fw-semibold">shipped from
+                                </li>
+                                <li class="list-group-item border-0">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked"
+                                        checked>
+                                    <label class="form-check-label" for="flexCheckChecked">
+                                        Checked checkbox
+                                    </label>
+                                </li>
+                            </ul>
+                        </ul>
+                    </div>
+
+                </div>
+
+
+
+                <div class="col-12 col-md-8 bg-white rounded-2 p-4">
+
+                    <div class="title d-flex justify-content-between align-items-center mt-2">
+                        <h4 class="text-capitalize">computing</h4>
+                        <div class="dropdown">
+                            <a class="btn btn-light hover-jumia dropdown-toggle p-2 fw-semibold" type="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                sort by:
+                            </a>
+
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item p-2" href="#">
+                                        <span>price</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item p-2" href="#">
+                                        <span>popularity</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item p-2" href="#">
+                                        <span>rating</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row products justify-content-around">
+
+                        <!-- <div class="col-12 col-md-6 col-lg-3 card">
+                            <a href="#">
+                                <img class="w-100" src="./imgs/15.jpg" alt="">
+                            </a>
+                            <div class="card-body">
+                                <p class="card-text text-truncate mb-1">Some quick example text to build on the card
+                                    title</p>
+                                <h5 class="card-title mb-0">EGP 455</h5>
+                                <p class="card-title text-muted text-decoration-line-through">EGP 525</p>
+                            </div>
+                            <div class="text-center my-2">
+                                <a href="#" class="btn btn-jumia shadow w-100">order now</a>
+                            </div>
+
+                        </div> -->
+
+
+
+
+                    </div>
+
+                    <nav aria-label="Page navigation example" class="my-5">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item ">
+                                <button class="page-link disabled prev-page"><i class="bi bi-chevron-left"></i></button>
+                            </li>
+                            <li class="page-item" data-page="1"><button class="page-link page-num active">1</button>
+                            </li>
+                            <li class="page-item" data-page="2"><button class="page-link page-num">2</button></li>
+                            <li class="page-item" data-page="3"><button class="page-link page-num">3</button></li>
+                            <li class="page-item" data-page="4"><button class="page-link page-num">4</button></li>
+                            <li class="page-item">
+                                <button class="page-link next-page"><i class="bi bi-chevron-right"></i></button>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+    <!-- products End -->
+
+    <!-- banner start -->
+    <section class="banner mt-3 bg-dark text-white py-3">
+        <div class="container">
+            <div class="row gap-lg-3">
+                <div class="logo col-12 col-lg-3 mb-5 text-center text-lg-start">
+                    <img class="mw-100 w-75" src="./imgs/Jumia-Logo-White.png" alt="">
+                </div>
+                <div class="subscribe col-12 col-lg-5 mb-5">
+                    <small class="fw-bold text-uppercase">new to jumia?</small>
+                    <p>Subscribe to our newsletter to get updates on our latest offers!
+                    </p>
+                    <div class="test-icon position-relative">
+                        <i class="bi bi-envelope-fill mail-icon"></i>
+                        <input type="email" placeholder="Enter E-mail Address" class="sub-email me-2">
+                        <a href="#"
+                            class="sub-gender p-2 text-decoration-none text-white border border-white  rounded-2">Male</a>
+                        <a href="#"
+                            class="sub-gender p-2 text-decoration-none text-white border border-white rounded-2">Female</a>
+                    </div>
+
+                    <div class="form-check mt-2 ">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            I agree to Jumia’s Privacy and Cookie Policy. You can unsubscribe from newsletters at any
+                            time.
+                        </label>
+                        <a href="#" class="text-decoration-none text-jumia">I accept the Legal Terms</a>
+                    </div>
+                </div>
+
+                <div class="download col-12 col-lg-3">
+
+                    <div class="d-flex gap-2">
+                        <div class="download-img">
+                            <img src="./imgs/logoBrand2.png" width="50" class="mw-100 rounded-2">
+                        </div>
+                        <div class="d-flex flex-column justify-content-around">
+                            <small class="text-uppercase fw-bold">donwload jumia free app</small>
+                            <small>Get access to exclusive offers!</small>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- banner End -->
+
+
+
+    <footer>
+        <div class="container">
+            <div class="row gap-sm-5 gap-md-0">
+                <div class="col-12 col-md-6 col-lg-3 text-sm-center text-md-start">
+                    <h6 class="text-uppercase">need help?</h6>
+                    <a href="" class="text-uppercase d-block text-white text-decoration-none">chat with us</a>
+                    <a href="" class="text-uppercase d-block text-white text-decoration-none">help center</a>
+                    <a href="" class="text-uppercase d-block text-white text-decoration-none">Contact us</a>
+
+                    <h6 class="text-uppercase my-2">USEFUL LINKS:</h6>
+                    <a href="" class="text-uppercase d-block text-white text-decoration-none">How to shop on Jumia?</a>
+                    <a href="" class="text-uppercase d-block text-white text-decoration-none">How to pay on Jumia?</a>
+                    <a href="" class="text-uppercase d-block text-white text-decoration-none">Delivery timelines</a>
+                    <a href="" class="text-uppercase d-block text-white text-decoration-none">Dispute Resolution
+                        Policy</a>
+                    <a href="" class="text-uppercase d-block text-white text-decoration-none">Return & Refund Policy</a>
+                    <a href="" class="text-uppercase d-block text-white text-decoration-none">Payment Information
+                        Guidelines</a>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-3 text-sm-center text-md-start">
+                    <h6 class="text-uppercase">ABOUT JUMIA EGYPT
+                    </h6>
+                    <a href="" class="text-uppercase d-block text-white text-decoration-none">Jumia Logistics
+                        Services</a>
+                    <a href="" class="text-uppercase d-block text-white text-decoration-none">Jumia Careers</a>
+                    <a href="" class="text-uppercase d-block text-white text-decoration-none">Terms and Conditions</a>
+                    <a href="" class="text-uppercase d-block text-white text-decoration-none">Stores Credit Terms &
+                        Conditions</a>
+                    <a href="" class="text-uppercase d-block text-white text-decoration-none">Privacy Policy</a>
+                    <a href="" class="text-uppercase d-block text-white text-decoration-none">Cookies Policy</a>
+                    <a href="" class="text-uppercase d-block text-white text-decoration-none">Free Shipping</a>
+                    <a href="" class="text-uppercase d-block text-white text-decoration-none">Flash Sales</a>
+                    <a href="" class="text-uppercase d-block text-white text-decoration-none">Join the Jumia DA
+                        Academy</a>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-3 text-sm-center text-md-start">
+                    <h6 class="text-uppercase">MAKE MONEY WITH JUMIA
+                    </h6>
+                    <a href="" class="text-uppercase d-block text-white text-decoration-none">Sell on Jumia</a>
+                    <a href="" class="text-uppercase d-block text-white text-decoration-none">Vendor Hub</a>
+                    <a href="" class="text-uppercase d-block text-white text-decoration-none">Become a Logistics Service
+                        Partner</a>
+                    <a href="" class="text-uppercase d-block text-white text-decoration-none">Become a Sales Consultant
+                        (J-Force )</a>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-3 text-sm-center text-md-start">
+                    <h6 class="text-uppercase">JUMIA INTERNATIONAL
+                    </h6>
+                    <div class="d-flex justify-content-center justify-content-md-start gap-2 align-items-center">
+                        <a href="" class="text-uppercase d-block text-white text-decoration-none">Algeria</a>
+                        <a href="" class="text-uppercase d-block text-white text-decoration-none">Nigeria</a>
+                    </div>
+                    <div class="d-flex justify-content-center justify-content-md-start gap-2 align-items-center">
+                        <a href="" class="text-uppercase d-block text-white text-decoration-none">Coast</a>
+                        <a href="" class="text-uppercase d-block text-white text-decoration-none">Tuisia</a>
+                    </div>
+                    <div class="d-flex justify-content-center justify-content-md-start gap-2 align-items-center">
+                        <a href="" class="text-uppercase d-block text-white text-decoration-none">Ghana</a>
+                        <a href="" class="text-uppercase d-block text-white text-decoration-none">Uganda</a>
+                    </div>
+
+                    <div class="d-flex justify-content-center justify-content-md-start gap-2 align-items-center">
+                        <a href="" class="text-uppercase d-block text-white text-decoration-none">Kenya</a>
+                    </div>
+
+                    <div class="d-flex justify-content-center justify-content-md-start gap-2 align-items-center">
+                        <a href="" class="text-uppercase d-block text-white text-decoration-none">Moroco</a>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="links d-flex justify-content-sm-center justify-content-lg-start gap-5 mt-5">
+                <div class="social">
+                    <h6 class="text-uppercase">join us on</h6>
+                    <div class="d-flex align-items-center gap-3">
+                        <a href="#" class="text-white fs-4"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="text-white fs-4"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="text-white fs-4"><i class="bi bi-youtube"></i></a>
+                        <a href="#" class="text-white fs-4"><i class="bi bi-twitter"></i></a>
+                    </div>
+                </div>
+
+                <div class="payment methods">
+                    <h6 class="text-uppercase">payment methods</h6>
+                    <div class="d-flex align-items-center gap-3">
+                        <a href="#" class="text-white fs-4"><i class="bi bi-cash-stack"></i></a>
+                        <a href="#" class="text-white fs-4"><i class="bi bi-credit-card"></i></a>
+                        <a href="#" class="text-white fs-4"><i class="bi bi-paypal"></i></a>
+                        <a href="#" class="text-white fs-4"><i class="bi bi-stripe"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="./main.js" type="module"></script>
+    <script src="./bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
